@@ -895,13 +895,21 @@ textarea {
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   color: var(--text-secondary);
   transition: background-color 150ms ease, color 150ms ease;
   margin-bottom: 2px;
+}
+
+.nav-item > a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 .nav-item:hover {
@@ -915,6 +923,9 @@ textarea {
   border-left: 3px solid var(--brand);
   font-weight: var(--weight-medium);
   margin-left: -3px;
+}
+
+.nav-item--active > a {
   padding-left: 19px;
 }
 

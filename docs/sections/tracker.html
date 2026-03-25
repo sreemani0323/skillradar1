@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillRadar - Application Tracker</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="page-nav" style="padding: 16px 24px; border-bottom: 1px solid var(--border-default); background: var(--surface-card);">
+        <a href="../index.html" style="color: var(--brand); text-decoration: none; font-weight: 500;">← Back to Dashboard</a>
+    </nav>
+
+    <!-- Tracker Section -->
+    <section id="tracker" class="section section--active">
+        <div class="page-content">
+            <h1 class="page-title">Application Tracker</h1>
+            <p class="page-subtitle">Track every application through your hiring pipeline.</p>
+
+            <!-- View Toggle -->
+            <div class="section-header">
+                <div class="view-toggle" role="group" aria-label="Tracker view">
+                    <button class="kanban-btn" role="radio" aria-checked="true">Kanban</button>
+                    <button class="timeline-btn" role="radio" aria-checked="false">Timeline</button>
+                </div>
+            </div>
+
+            <!-- Pipeline Summary -->
+            <div class="pipeline-bar" id="pipeline-bar">
+                <div class="pipeline-stage">
+                    <span class="stage-label">Applied</span>
+                    <span class="stage-count">0</span>
+                </div>
+                <div class="pipeline-arrow">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"/>
+                    </svg>
+                </div>
+                <div class="conversion-rate" style="font-size: 11px; color: var(--text-secondary);">
+                    Interview rate: 0%
+                </div>
+                <div class="pipeline-stage">
+                    <span class="stage-label">Interview</span>
+                    <span class="stage-count">0</span>
+                </div>
+                <div class="pipeline-arrow">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"/>
+                    </svg>
+                </div>
+                <div class="conversion-rate" style="font-size: 11px; color: var(--text-secondary);">
+                    Offer rate: 0%
+                </div>
+                <div class="pipeline-stage">
+                    <span class="stage-label">Offer</span>
+                    <span class="stage-count">0</span>
+                </div>
+            </div>
+
+            <!-- Kanban View -->
+            <div class="kanban-view" id="kanban-view">
+                <div class="kanban-columns">
+                    <div class="kanban-column" data-status="applied">
+                        <div class="column-header">
+                            <span class="column-title">Applied</span>
+                            <span class="column-count badge">0</span>
+                            <button class="add-btn btn-secondary">+ Add</button>
+                        </div>
+                        <div class="add-form">
+                            <input type="text" class="role-input" placeholder="Role title" required>
+                            <input type="text" class="company-input" placeholder="Company name" required>
+                            <input type="date" class="date-input" required>
+                            <input type="text" class="salary-input" placeholder="Salary range (optional)">
+                            <div class="form-actions">
+                                <button class="save-card-btn btn-primary">Save</button>
+                                <button class="cancel-card-btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                        <div class="kanban-cards"></div>
+                    </div>
+                    <div class="kanban-column" data-status="interview">
+                        <div class="column-header">
+                            <span class="column-title">Interview</span>
+                            <span class="column-count badge">0</span>
+                            <button class="add-btn btn-secondary">+ Add</button>
+                        </div>
+                        <div class="add-form">
+                            <input type="text" class="role-input" placeholder="Role title" required>
+                            <input type="text" class="company-input" placeholder="Company name" required>
+                            <input type="date" class="date-input" required>
+                            <input type="text" class="salary-input" placeholder="Salary range (optional)">
+                            <div class="form-actions">
+                                <button class="save-card-btn btn-primary">Save</button>
+                                <button class="cancel-card-btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                        <div class="kanban-cards"></div>
+                    </div>
+                    <div class="kanban-column" data-status="offer">
+                        <div class="column-header">
+                            <span class="column-title">Offer</span>
+                            <span class="column-count badge">0</span>
+                            <button class="add-btn btn-secondary">+ Add</button>
+                        </div>
+                        <div class="add-form">
+                            <input type="text" class="role-input" placeholder="Role title" required>
+                            <input type="text" class="company-input" placeholder="Company name" required>
+                            <input type="date" class="date-input" required>
+                            <input type="text" class="salary-input" placeholder="Salary range (optional)">
+                            <div class="form-actions">
+                                <button class="save-card-btn btn-primary">Save</button>
+                                <button class="cancel-card-btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                        <div class="kanban-cards"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline View -->
+            <div class="timeline-view" id="timeline-view">
+                <div class="timeline-container">
+                    <svg class="timeline-svg" id="timeline-svg" width="600" height="220"></svg>
+                    <div class="empty-state" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                        <p>No applications tracked yet. Add applications using the Kanban view.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context Menu -->
+    <div class="context-menu" id="context-menu">
+        <button class="menu-item move-to-applied">Move to Applied</button>
+        <button class="menu-item move-to-interview">Move to Interview</button>
+        <button class="menu-item move-to-offer">Move to Offer</button>
+        <hr>
+        <button class="menu-item-danger delete-item">Delete</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../data.js"></script>
+    <script type="module" src="tracker.js"></script>
+</body>
+</html>

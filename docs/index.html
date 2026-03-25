@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillRadar - For B.Tech Students</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+</head>
+<body>
+    <!-- Desktop Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar__brand">
+            <svg class="sidebar__logo" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+            </svg>
+            <div class="sidebar__text">
+                <span class="sidebar__name">SkillRadar</span>
+                <span class="sidebar__tagline">for B.Tech students</span>
+            </div>
+        </div>
+
+        <span class="sidebar__section-label">MAIN</span>
+
+        <ul class="sidebar__nav">
+            <li class="nav-item nav-item--active">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                    <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect width="7" height="7" x="3" y="3" rx="1"/>
+                        <rect width="7" height="7" x="14" y="3" rx="1"/>
+                        <rect width="7" height="7" x="14" y="14" rx="1"/>
+                        <rect width="7" height="7" x="3" y="14" rx="1"/>
+                    </svg>
+                    <span class="nav-item__label">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="sections/jobs.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                    <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                    <span class="nav-item__label">Jobs</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="sections/gap-analyzer.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                    <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M3 3v18h18"/>
+                        <path d="m19 9-5 5-4-4-3 3"/>
+                    </svg>
+                    <span class="nav-item__label">Gap Analyzer</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="sections/trends.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                    <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="m22 7-8.5 8.5-5-5L1 18"/>
+                        <path d="m16 7 6 0 0 6"/>
+                    </svg>
+                    <span class="nav-item__label">Trends</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="sections/tracker.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                    <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect width="6" height="16" x="4" y="2" rx="2"/>
+                        <rect width="6" height="9" x="14" y="9" rx="2"/>
+                        <path d="M22 22H2"/>
+                    </svg>
+                    <span class="nav-item__label">Tracker</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="sections/alerts.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                    <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                        <path d="m13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                    <span class="nav-item__label">Alerts</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar__footer">
+            <span class="sidebar__skill-count">Skills saved: 0</span>
+        </div>
+    </nav>
+
+    <!-- Mobile Top Navigation -->
+    <header class="topbar">
+        <div class="topbar__brand">
+            <svg class="topbar__logo" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+            </svg>
+            <span class="topbar__name">SkillRadar</span>
+        </div>
+        <button class="topbar__menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" x2="20" y1="6" y2="6"/>
+                <line x1="4" x2="20" y1="12" y2="12"/>
+                <line x1="4" x2="20" y1="18" y2="18"/>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="drawer-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <div class="drawer-backdrop"></div>
+        <nav class="drawer-panel">
+            <div class="drawer__header">
+                <div class="drawer__brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                    <span>SkillRadar</span>
+                </div>
+                <button class="drawer__close" aria-label="Close navigation menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m18 6-12 12"/>
+                        <path d="m6 6 12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <ul class="drawer__nav">
+                <li class="nav-item nav-item--active">
+                    <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect width="7" height="7" x="3" y="3" rx="1"/>
+                        <rect width="7" height="7" x="14" y="3" rx="1"/>
+                        <rect width="7" height="7" x="14" y="14" rx="1"/>
+                        <rect width="7" height="7" x="3" y="14" rx="1"/>
+                    </svg>
+                    <span class="nav-item__label">Dashboard</span>
+                </li>
+                <li class="nav-item">
+                    <a href="sections/jobs.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                        <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                        <span class="nav-item__label">Jobs</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sections/gap-analyzer.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                        <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 3v18h18"/>
+                            <path d="m19 9-5 5-4-4-3 3"/>
+                        </svg>
+                        <span class="nav-item__label">Gap Analyzer</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sections/trends.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                        <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="m22 7-8.5 8.5-5-5L1 18"/>
+                            <path d="m16 7 6 0 0 6"/>
+                        </svg>
+                        <span class="nav-item__label">Trends</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sections/tracker.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                        <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect width="6" height="16" x="4" y="2" rx="2"/>
+                            <rect width="6" height="9" x="14" y="9" rx="2"/>
+                            <path d="M22 22H2"/>
+                        </svg>
+                        <span class="nav-item__label">Tracker</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="sections/alerts.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                        <svg class="nav-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                            <path d="m13.73 21a2 2 0 0 1-3.46 0"/>
+                        </svg>
+                        <span class="nav-item__label">Alerts</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Page Wrapper -->
+    <div class="page-wrapper">
+        <main class="page-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section section--active">
+                <h1 class="page-title">Dashboard</h1>
+                <p class="page-subtitle">An overview of current market demand and your readiness.</p>
+
+                <!-- Onboarding Strip -->
+                <div class="onboarding-strip">
+                    <div class="strip-content">
+                        <p class="strip-title">Complete your profile to see your skill match scores.</p>
+                        <div class="strip-form">
+                            <select class="branch-select" aria-label="Branch">
+                                <option value="">Select Branch</option>
+                                <option value="CSE">CSE</option>
+                                <option value="ECE">ECE</option>
+                                <option value="IT">IT</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <input type="number" class="gradyear-input" min="2024" max="2030" placeholder="Grad Year" aria-label="Graduation Year">
+                            <input type="text" class="skills-input" placeholder="Your skills, comma-separated" aria-label="Your skills">
+                            <button class="save-btn btn-primary">Save Profile</button>
+                        </div>
+                    </div>
+                    <button class="strip-dismiss btn-icon" aria-label="Dismiss profile setup">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m18 6-12 12"/>
+                            <path d="m6 6 12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Market Pulse Ticker -->
+                <div class="ticker">
+                    <div class="ticker__indicator">
+                        <span class="ticker__dot"></span>
+                        <span class="ticker__live-label">LIVE</span>
+                    </div>
+                    <div class="ticker__messages">
+                        <p class="ticker__message"></p>
+                        <p class="ticker__message"></p>
+                        <p class="ticker__message"></p>
+                        <p class="ticker__message"></p>
+                        <p class="ticker__message"></p>
+                    </div>
+                </div>
+
+                <!-- Stat Row -->
+                <div class="stat-row">
+                    <div class="stat-card" data-accent="brand">
+                        <svg class="stat-card__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Total Listings</span>
+                            <span class="stat-card__value" data-counter="0">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-accent="violet">
+                        <svg class="stat-card__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+                            <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+                            <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+                        </svg>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Unique Skills</span>
+                            <span class="stat-card__value" data-counter="0">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-accent="emerald">
+                        <svg class="stat-card__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="m4.93 4.93 4.24 4.24"/>
+                            <path d="m14.83 9.17 4.24-4.24"/>
+                            <path d="m14.83 14.83 4.24 4.24"/>
+                            <path d="m9.17 14.83-4.24 4.24"/>
+                        </svg>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Remote Roles</span>
+                            <span class="stat-card__value" data-counter="0">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-accent="amber">
+                        <svg class="stat-card__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="m22 7-8.5 8.5-5-5L1 18"/>
+                            <path d="m16 7 6 0 0 6"/>
+                        </svg>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Top Demand Skill</span>
+                            <span class="stat-card__value" id="top-skill">Python</span>
+                        </div>
+                    </div>
+                    <div class="match-score-container">
+                        <div class="match-score-ring" id="dashboard-match-ring"></div>
+                        <span class="match-score-label">Your Match</span>
+                    </div>
+                </div>
+
+                <!-- Trending Skills -->
+                <div class="section-block">
+                    <h2>In Demand This Week</h2>
+                    <div class="trending-skills" id="trending-skills"></div>
+                </div>
+
+                <!-- Recently Added Jobs -->
+                <div class="section-block">
+                    <div class="section-header">
+                        <h2>Recently Added</h2>
+                        <a href="sections/jobs.html" class="btn-text view-all-btn">View all</a>
+                    </div>
+                    <div class="jobs-grid" id="recent-jobs-grid"></div>
+                </div>
+
+                <!-- Skill Demand Chart -->
+                <div class="section-block">
+                    <h2>Skill Demand Distribution</h2>
+                    <p class="section-subtitle">Most in-demand skills across current job listings</p>
+
+                    <!-- Chart Legend -->
+                    <div class="chart-legend" style="margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px;">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <div style="width: 12px; height: 12px; background: #10B981; border-radius: 2px;"></div>
+                            <span>High Demand (70%+)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <div style="width: 12px; height: 12px; background: #F59E0B; border-radius: 2px;"></div>
+                            <span>Medium Demand (50-70%)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <div style="width: 12px; height: 12px; background: #EF4444; border-radius: 2px;"></div>
+                            <span>Lower Demand (30-50%)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <div style="width: 12px; height: 12px; background: #6B7280; border-radius: 2px;"></div>
+                            <span>Emerging (Below 30%)</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="skill-demand-chart" width="800" height="400"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-left">
+                <span class="footer-brand">SkillRadar</span>
+                <span class="footer-copy"> © <span id="footer-year">2024</span></span>
+            </div>
+            <span class="footer-right">Helping B.Tech students find what companies actually want.</span>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script type="module" src="sections/dashboard.js"></script>
+    <script>
+        // Mobile drawer functionality for main page
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.topbar__menu-btn');
+            const drawerOverlay = document.querySelector('.drawer-overlay');
+            const drawerBackdrop = document.querySelector('.drawer-backdrop');
+            const drawerClose = document.querySelector('.drawer__close');
+
+            function openDrawer() {
+                drawerOverlay.classList.add('drawer--open');
+                document.body.style.overflow = 'hidden';
+                menuBtn.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeDrawer() {
+                drawerOverlay.classList.remove('drawer--open');
+                document.body.style.overflow = '';
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+
+            if (menuBtn) menuBtn.addEventListener('click', openDrawer);
+            if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+            if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && drawerOverlay && drawerOverlay.classList.contains('drawer--open')) {
+                    closeDrawer();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillRadar - Trends</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="page-nav" style="padding: 16px 24px; border-bottom: 1px solid var(--border-default); background: var(--surface-card);">
+        <a href="../index.html" style="color: var(--brand); text-decoration: none; font-weight: 500;">← Back to Dashboard</a>
+    </nav>
+
+    <!-- Trends Section -->
+    <section id="trends" class="section section--active">
+        <div class="page-content">
+            <h1 class="page-title">Skill Demand Trends</h1>
+            <p class="page-subtitle">Track how skill demand has changed over the past 7 weeks.</p>
+
+            <!-- Trends Tabs -->
+            <div class="analyzer-tabs" role="tablist">
+                <button class="tab-skill-trends" role="tab" aria-selected="true">Skill Trends</button>
+                <button class="tab-salary-heatmap" role="tab" aria-selected="false">Salary Heatmap</button>
+            </div>
+
+            <!-- Skill Trends Panel -->
+            <div class="tab-panel tab-panel--trends tab-panel--active" id="trends-panel">
+                <div class="trends-grid" id="trends-grid"></div>
+            </div>
+
+            <!-- Salary Heatmap Panel -->
+            <div class="tab-panel tab-panel--heatmap" id="heatmap-panel">
+                <h2>Average Monthly Stipend by Skill</h2>
+                <p class="section-subtitle">Approximate average from market data</p>
+
+                <div class="legend">
+                    <span class="legend-label-low">Lower stipend</span>
+                    <div class="legend-gradient"></div>
+                    <span class="legend-label-high">Higher stipend</span>
+                </div>
+
+                <div class="heatmap-grid" id="heatmap-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../data.js"></script>
+    <script type="module" src="trends.js"></script>
+</body>
+</html>

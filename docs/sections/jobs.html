@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillRadar - Jobs</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="page-nav" style="padding: 16px 24px; border-bottom: 1px solid var(--border-default); background: var(--surface-card);">
+        <a href="../index.html" style="color: var(--brand); text-decoration: none; font-weight: 500;">← Back to Dashboard</a>
+    </nav>
+
+    <!-- Jobs Section -->
+    <section id="jobs" class="section section--active">
+        <div class="page-content">
+            <h1 class="page-title">Job & Internship Listings</h1>
+            <p class="page-subtitle">Browse all available roles. Filter by skill, location, or level.</p>
+
+            <!-- Job Controls -->
+            <div class="job-controls">
+                <div class="search-wrapper">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <input type="text" class="job-search" placeholder="Search by role or company..." aria-label="Search jobs">
+                </div>
+                <select class="skill-filter" aria-label="Filter by skill">
+                    <option value="">All Skills</option>
+                </select>
+                <select class="location-filter" aria-label="Filter by location">
+                    <option value="">All Locations</option>
+                </select>
+                <select class="level-filter" aria-label="Filter by level">
+                    <option value="">All Levels</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+                <button class="sort-match-btn btn-secondary">Sort by Match</button>
+                <button class="clear-filters-btn btn-text">Clear filters</button>
+            </div>
+
+            <!-- Bookmark Toggle -->
+            <div class="jobs-header">
+                <button class="saved-toggle-btn btn-secondary">
+                    <span>Saved</span>
+                    <span class="saved-count badge">0</span>
+                </button>
+            </div>
+
+            <!-- Jobs Grid -->
+            <div class="jobs-grid" id="jobs-grid"></div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="jobs-empty-state">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+                <p class="empty-title">No results found</p>
+                <p class="empty-body">Try adjusting your filters or search terms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Detail Panel -->
+    <div class="company-panel-overlay" id="company-panel-overlay">
+        <div class="panel-backdrop"></div>
+        <aside class="company-panel">
+            <div class="panel-header">
+                <div class="panel-company-info">
+                    <div class="panel-company-avatar"></div>
+                    <div class="panel-company-meta">
+                        <h2 class="panel-company-name"></h2>
+                        <p class="panel-subtitle"></p>
+                    </div>
+                </div>
+                <button class="panel-close btn-icon" aria-label="Close panel">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m18 6-12 12"/>
+                        <path d="m6 6 12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="panel-section">
+                <h3>Required Skills</h3>
+                <div class="panel-skills"></div>
+            </div>
+            <div class="panel-jobs-list">
+                <h3>Open Positions</h3>
+                <div class="panel-jobs"></div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../data.js"></script>
+    <script type="module" src="jobs.js"></script>
+</body>
+</html>

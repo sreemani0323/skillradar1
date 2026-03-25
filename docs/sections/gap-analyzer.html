@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillRadar - Gap Analyzer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="page-nav" style="padding: 16px 24px; border-bottom: 1px solid var(--border-default); background: var(--surface-card);">
+        <a href="../index.html" style="color: var(--brand); text-decoration: none; font-weight: 500;">← Back to Dashboard</a>
+    </nav>
+
+    <!-- Gap Analyzer Section -->
+    <section id="gap-analyzer" class="section section--active">
+        <div class="page-content">
+            <h1 class="page-title">Skill Gap Analyzer</h1>
+            <p class="page-subtitle">Identify which in-demand skills you are missing and discover your next learning steps.</p>
+
+            <!-- Analyzer Tabs -->
+            <div class="analyzer-tabs" role="tablist">
+                <button class="tab-enter-skills" role="tab" aria-selected="true" id="tab-enter">Enter Skills</button>
+                <button class="tab-paste-resume" role="tab" aria-selected="false" id="tab-resume">Paste Resume Text</button>
+            </div>
+
+            <!-- Enter Skills Panel -->
+            <div class="tab-panel tab-panel--enter tab-panel--active" id="tab-panel-enter">
+                <div class="analyzer-layout">
+                    <div class="input-card card">
+                        <label class="form-label">Your Skills</label>
+                        <div class="tag-input-container">
+                            <div class="tags-list"></div>
+                            <input type="text" class="tag-input__field" placeholder="Add skills...">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Branch</label>
+                                <select class="branch-select">
+                                    <option value="">All</option>
+                                    <option value="CSE">CSE</option>
+                                    <option value="ECE">ECE</option>
+                                    <option value="IT">IT</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Target Role</label>
+                                <select class="target-role-select">
+                                    <option value="">Select Role</option>
+                                    <option value="Frontend Developer">Frontend Developer</option>
+                                    <option value="Backend Developer">Backend Developer</option>
+                                    <option value="Full Stack Developer">Full Stack Developer</option>
+                                    <option value="Data Scientist">Data Scientist</option>
+                                    <option value="DevOps Engineer">DevOps Engineer</option>
+                                    <option value="Mobile Developer">Mobile Developer</option>
+                                    <option value="Cloud Engineer">Cloud Engineer</option>
+                                    <option value="AI-ML Engineer">AI-ML Engineer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="analyze-btn btn-primary">Analyze Skills</button>
+                    </div>
+
+                    <div class="results-card card" id="analysis-results">
+                        <div class="match-score-ring" id="analyzer-match-ring"></div>
+                        <div class="results-section" id="your-skills-section">
+                            <h3>Skills You Have</h3>
+                            <div class="skills-chips"></div>
+                        </div>
+                        <div class="results-section" id="missing-skills-section">
+                            <h3>Missing In-Demand Skills</h3>
+                            <div class="missing-chips"></div>
+                        </div>
+                        <div class="results-section" id="roadmap-section">
+                            <h3>Your Learning Path</h3>
+                            <div class="skill-roadmap"></div>
+                        </div>
+                        <div class="results-section" id="matched-jobs-section">
+                            <h3>Jobs You Can Apply to Now</h3>
+                            <div class="matched-jobs-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paste Resume Panel -->
+            <div class="tab-panel tab-panel--resume" id="tab-panel-resume">
+                <div class="resume-panel">
+                    <label class="form-label" for="resume-textarea">Paste your resume or CV text below</label>
+                    <textarea id="resume-textarea" class="resume-textarea" rows="12" placeholder="Paste the full text of your resume here..."></textarea>
+                    <button class="scan-btn btn-primary">Scan Resume for Skills</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../data.js"></script>
+    <script type="module" src="gap-analyzer.js"></script>
+</body>
+</html>
